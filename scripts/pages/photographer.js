@@ -62,7 +62,7 @@ function thumbnailGalleryTemplate(data) {
 
   // const picture = `assets/Photographers_ID_Photos/${portrait}`;
 
-  const pathToPictures = "assets/Photographers_Pictures";
+  const pathToPictures = "../assets/Photographers_Pictures";
   const photographerName = "Nabeel";
 
   function getThumbnailCard() {
@@ -243,9 +243,9 @@ const sortationCriteria = document.getElementById("pictureChoiceCriteria");
 sortationCriteria.addEventListener("change", (e) => {
   const criteria = e.target.value;
   console.log("criteria: ", criteria);
-const gallery = document.querySelector(".thumbnailGallery__section")
-gallery.replaceChildren();
-init(id, criteria);
+  const gallery = document.querySelector(".thumbnailGallery__section");
+  gallery.replaceChildren();
+  init(id, criteria);
 });
 /* 
 function displayItem() {

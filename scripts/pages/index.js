@@ -1,4 +1,4 @@
-const pathToData = "../data/";
+const pathToData = "data/";
 const pathToPhotographerIdPhoto = "../assets/Photographers_ID_Photos/";
 
 async function getPhotographers() {

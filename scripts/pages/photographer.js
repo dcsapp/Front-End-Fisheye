@@ -62,7 +62,7 @@ function thumbnailGalleryTemplate(data) {
 
   // const picture = `assets/Photographers_ID_Photos/${portrait}`;
 
-  const pathToPictures = "../assets/Photographers_Pictures";
+  const pathToPictures = "./assets/Photographers_Pictures";
   const photographerName = "Nabeel";
 
   function getThumbnailCard() {

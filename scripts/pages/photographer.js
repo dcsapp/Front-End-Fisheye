@@ -179,8 +179,8 @@ const id = urlParams.get("id");
 // 3 - R E T R I E V E  P I C T U R E S  D A T A
 // They are requested to feed thumbnail gallery
 
-const pathToData = "../data/";
-const pathToPhotographerIdPhoto = "../assets/images/Photographers_ID_Photos/";
+const pathToData = "data/";
+const pathToPhotographerIdPhoto = "./assets/Photographers_ID_Photos/";
 
 async function getPhotographerPictures(id, sortCriteria) {
   try {

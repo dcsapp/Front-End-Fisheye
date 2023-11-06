@@ -2,35 +2,101 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
+      <a href="index.html">
       <img src="assets/images/logo.png" class="logo" />
+    </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photographerProfile">
+          <h1 class="photographerProfile__name">MIMI</h1>
+          <p class="photographerProfile__location">London, UK</p>
+          <p class="photographerProfile__tagline">Vive la photo</p>
+        </div>
+
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
+
+        <div>
+          <img
+            class="photographerPortrait__img"
+            src="../assets/Photographers_ID_Photos/MimiKeel.jpg"
+            alt="error"
+          />
+        </div>
       </div>
+
+      <section class="picture-sortation">
+        <p>Trier par</p>
+
+        <!-- <div class="dropdown">
+          <div class="dropdown__item">
+            <p>Popularité</p>
+           
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+          <div class="dropdown__item">
+            <p>Date</p>
+          </div>
+          <div class="dropdown__item">
+            <p>Titre</p>
+          </div>
+        </div> -->
+         <!-- <i class="fa-solid fa-angle-up"></i>  -->
+
+        
+      <div class="" >
+        <select name="sortPictures" id="pictureChoiceCriteria">
+          <option value="likes" selected>Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+        <span class="fa-solid fa-angle-down"></span> 
+        <span class="custom-arrow"></span>
+      </div>
+
+      </section>
+
+      <section class="thumbnailGallery__section">
+        <!-- Photographer pictures / video gallery location -->
+      </section>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

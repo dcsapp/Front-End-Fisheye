@@ -1,8 +1,17 @@
 @import url("photographer.css");
 
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    width: 1440px;
 }
 
 
@@ -31,7 +40,9 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographer_section article,
+.photographer_section article a
+ {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -39,12 +50,36 @@ h1 {
     flex-direction: column;
 }
 
+/* name */
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
 }
 
+/* portrait */
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+   
 }
+/* country - city */
+.p_city {
+    font-size: 13px;
+    color: #901C1C;
+}
+
+/* tagline */
+.p_tagline {
+    font-size: 10px;
+    color: #000;
+}
+
+/* price */
+.p_price {
+    font-size: 9px;
+    color: #757575;
+}
+
+/*  */

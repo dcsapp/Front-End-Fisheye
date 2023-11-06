@@ -2,13 +2,58 @@
     display: none;
 }
 
+
+header a {
+    cursor: pointer;
+ }
+
+
+/* P H O T O G R A P H E R  H E A D E R */
+/* H E A D E R - 1 - display layout */
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+/* grid ??? */
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
 }
 
+/* H E A D E R - 2 - photographer Data */
+.photographerProfile {
+    width: 358px;
+    height: 200px;
+    margin-top: 69px;
+    margin-left: 50px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.photographerProfile__name {
+    font-size: 64px;
+    font-weight: 400;
+    color: #d3573c;
+}
+
+.photographerProfile__location {
+    font-size: 24px;
+    font-weight: 400;
+    color: #901C1C;
+}
+
+.photographerProfile__tagline {
+    font-size: 18px;
+    font-weight: 400;
+    color: #525252;
+    margin-top: 30px;
+}
+
+/* H E A D E R - 3 - photographer Contact button and Modal */
 .contact_button {
+    margin-top: 137px;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -74,3 +119,215 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/* H E A D E R - 4 - photographer portrait */
+.photographerPortrait__img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-top: 56px;
+    text-align: right;
+    border: 1px solid black;
+    object-fit: cover;
+    border-radius: 100px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* S E C T I O N  S O R T A T I O N  P I C T U R E  C H O I C E */
+/* Dropdown list  */
+.picture-sortation {
+    height: 101px;
+    margin: 0 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    /* border: 1px solid black; */
+}
+
+.picture-sortation p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+
+}
+
+/* Dropdown */
+.dropdown {
+    width: 170px;
+    height: 70px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+   align-content: flex-end; */
+   /*  flex-shrink: 0; */
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: absolute;
+    top: 15px;
+    left: 90px;
+    transition: all 500ms;
+}
+
+.dropdown__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* justify-items: center;
+    align-content: center; */
+    flex-shrink: 0;
+    height: 70px;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.dropdown__item:not(:first-child) {
+    border-top: 1px solid #fff;
+    height: 50px;
+    /* margin-top: -19px; */
+}
+
+.dropdown__item p {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fa-angle-down {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    transition: all 500ms;
+    /* transform: rotate(180deg); */
+}
+
+select {
+    width: 170px;
+    height: 69px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    appearance: none;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+   /*  margin: 0 10px; */
+}
+
+.sortation {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.custom-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background: red;
+    height: 100%;
+    width: 1rem;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 0 5px 5px 0;
+}
+option {
+    color: red;
+
+}
+
+
+
+
+
+
+/* S E C T I O N  thumbnailGallery */
+.thumbnailGallery__section {
+    width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px 100px;
+    gap: 50px;
+} */
+/* thumnail card */
+
+.thumbImgCard {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumbImgCard__img {
+    display: block;
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+   /*  border: 1px solid black; */
+}
+
+.thumbImgCard__vid {
+    display: block;
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+   /*  border: 1px solid black; */
+}
+
+.thumbImgCard__img a {
+   cursor: pointer;
+}
+
+
+.thumbImgCard__footer {
+    width: 350px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 13px;
+}
+
+.thumbImgCard__footer__title {
+    display: block;
+    width: 292px;
+    height: 31px;
+}
+
+.thumbImgCard__footer__title, p {
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.thumbImgCard__footer__like {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.thumbImgCard__footer__like p,
+.thumbImgCard__footer__like i
+ {
+    font-size: 24px;
+}
+
+.thumbImgCard__footer__like p {
+    color: #000;
+    padding-right: 10px;
+}
+
+.thumbImgCard__footer__like i
+ {
+    color: #901C1C;
+ }

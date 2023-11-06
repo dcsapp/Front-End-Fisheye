@@ -239,7 +239,7 @@ async function init(id, criteria) {
   displayThumbnailGallery(pictures);
 }
 
-init(id, "title");
+init(id, "likes");
 
 // S O R T A T I O N  D R O P D O W N  L I S T
 const sortationCriteria = document.getElementById("pictureChoiceCriteria");

@@ -1,247 +1,254 @@
+:root {
+    --option-height: 51px;
+   }
+
+
+
 #contact_modal {
-    display: none;
+  display: none;
 }
 
-
 header a {
-    cursor: pointer;
- }
-
+  cursor: pointer;
+}
 
 /* P H O T O G R A P H E R  H E A D E R */
 /* H E A D E R - 1 - display layout */
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-/* grid ??? */
-    /* display: flex;
-    flex-direction: row; */
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
+.photographerHeader {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  /* grid ??? */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* flex: 1; */
+  /* display: grid;
+    grid-template-columns: 2fr 1fr 1fr; */
 }
 
 /* H E A D E R - 2 - photographer Data */
 .photographerProfile {
-    width: 358px;
-    height: 200px;
-    margin-top: 69px;
-    margin-left: 50px;
+  min-width: 308px;
+  /*  width: 100%; */
+  height: 200px;
+  margin-top: 69px;
+  margin-left: 50px;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .photographerProfile__name {
-    font-size: 64px;
-    font-weight: 400;
-    color: #d3573c;
+  font-size: 64px;
+  font-weight: 400;
+  color: #d3573c;
 }
 
 .photographerProfile__location {
-    font-size: 24px;
-    font-weight: 400;
-    color: #901C1C;
+  font-size: 24px;
+  font-weight: 400;
+  color: #901c1c;
 }
 
 .photographerProfile__tagline {
-    font-size: 18px;
-    font-weight: 400;
-    color: #525252;
-    margin-top: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #525252;
+  margin-top: 20px;
 }
 
 /* H E A D E R - 3 - photographer Contact button and Modal */
 .contact_button {
-    margin-top: 137px;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-top: 137px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
 }
 
 /* H E A D E R - 4 - photographer portrait */
-.photographerPortrait__img {
-    display: block;
-    width: 200px;
-    height: 200px;
-    margin-top: 56px;
-    text-align: right;
-    border: 1px solid black;
-    object-fit: cover;
-    border-radius: 100px;
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
+.photographerPictureId__img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-top: 56px;
+  margin-right: 50px;
+  background: #c4c4c4;
+  /* text-align: right;
+    border: 1px solid black; */
+  object-fit: cover;
+  border-radius: 100px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* S E C T I O N  S O R T A T I O N  P I C T U R E  C H O I C E */
-/* Dropdown list  */
+/* Dropdown list section */
 .picture-sortation {
-    height: 101px;
-    margin: 0 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
-    position: relative;
-    /* border: 1px solid black; */
+  height: 101px;
+  margin: 0 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  /* border: 1px solid black; */
 }
 
+/* title */
 .picture-sortation p {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
 }
 
-/* Dropdown */
-.dropdown {
+/* dropdown list */
+
+
+  
+  .select-menu {
     width: 170px;
-    height: 70px;
-    background-color: #901C1C;
-    border-radius: 5px;
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    min-height: 69px;
+    background-color: #901c1c;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-   align-content: flex-end; */
-   /*  flex-shrink: 0; */
-    flex-wrap: nowrap;
-    overflow: hidden;
+    cursor: pointer;
     position: absolute;
     top: 15px;
-    left: 90px;
-    transition: all 500ms;
-}
-
-.dropdown__item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    /* justify-items: center;
-    align-content: center; */
-    flex-shrink: 0;
-    height: 70px;
-    padding: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-.dropdown__item:not(:first-child) {
-    border-top: 1px solid #fff;
-    height: 50px;
-    /* margin-top: -19px; */
-}
-
-.dropdown__item p {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.fa-angle-down {
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-    transition: all 500ms;
-    /* transform: rotate(180deg); */
-}
-
-select {
-    width: 170px;
-    height: 69px;
-    background-color: #901C1C;
-    border-radius: 5px;
-    appearance: none;
-    border: 0;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+    left: 100px;
+    z-index: 1;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    padding: 10px;
-   /*  margin: 0 10px; */
-}
-
-.sortation {
-    position: relative;
-    box-sizing: border-box;
-}
-
-.custom-arrow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-    background: red;
-    height: 100%;
-    width: 1rem;
-    pointer-events: none;
+  }
+  
+  .select {
+    width: 100%;
+    background-color: #901c1c;
+    padding: 0 10px;
+    height: 69px;
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 6px; /*  6px 0 0; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+  }
+  
+  .rotate-arrow {
+    transform: rotate(180deg);
+    transition: 500ms;
+  }
+  
+  .option {
+    width: 100%;
+    height: var(--option-height);/* 51px; */
+    background-color: #901c1c;
+    margin: 1px 0;
+    padding: 15px 0;
+    font-weight: bold;
+    font-size: 18px;
+    border-top: 1px solid #fff;
+  }
+  
+  .option.hide {
+    display: none;
+  }
+  
+  .options-list {
+    width: 100%;
+    background-color: #901c1c;
+    border-radius: 0 0 6px 6px;
+    padding: 0 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    height: 0;
     overflow: hidden;
-    border-radius: 0 5px 5px 0;
-}
-option {
-    color: red;
+    transition: 500ms;
+  }
+  
+  .options-list.active {
+    height: calc(var(--option-height) * 2);
+  }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -250,84 +257,83 @@ option {
 
 /* S E C T I O N  thumbnailGallery */
 .thumbnailGallery__section {
-    width: 1240px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 20px 100px;
-    gap: 50px;
-} */
+  width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 20px 100px;
+  gap: 50px;
+}
+*/
 /* thumnail card */
 
 .thumbImgCard {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .thumbImgCard__img {
-    display: block;
-    width: 350px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5px;
-   /*  border: 1px solid black; */
+  display: block;
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  /*  border: 1px solid black; */
 }
 
 .thumbImgCard__vid {
-    display: block;
-    width: 350px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5px;
-   /*  border: 1px solid black; */
+  display: block;
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  /*  border: 1px solid black; */
 }
 
 .thumbImgCard__img a {
-   cursor: pointer;
+  cursor: pointer;
 }
 
-
 .thumbImgCard__footer {
-    width: 350px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 13px;
+  width: 350px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 13px;
 }
 
 .thumbImgCard__footer__title {
-    display: block;
-    width: 292px;
-    height: 31px;
+  display: block;
+  width: 292px;
+  height: 31px;
 }
 
-.thumbImgCard__footer__title, p {
-    font-size: 24px;
-    color: #901C1C;
+.thumbImgCard__footer__title,
+p {
+  font-size: 24px;
+  color: #901c1c;
 }
 
 .thumbImgCard__footer__like {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .thumbImgCard__footer__like p,
-.thumbImgCard__footer__like i
- {
-    font-size: 24px;
+.thumbImgCard__footer__like i {
+  font-size: 24px;
 }
 
 .thumbImgCard__footer__like p {
-    color: #000;
-    padding-right: 10px;
+  color: #000;
+  padding-right: 10px;
 }
 
-.thumbImgCard__footer__like i
- {
-    color: #901C1C;
- }
+.thumbImgCard__footer__like i {
+  color: #901c1c;
+}

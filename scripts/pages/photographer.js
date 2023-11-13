@@ -1,19 +1,22 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
-// const arrayPictures = getPhotographersPictures(id);
-// console.log("AAA", arrayPictures);
+// C O N S T A N T S
+// Paths to assets
+const pathTo_Photographers_Pictures = "./assets/Photographers_Pictures/";
+const pathTo_Photographers_ID_Photos = "./assets/Photographers_ID_Photos/";
+// Path to JSON data
+const pathTo_JSON_Data = "./data/";
 
-function sortPicturesBy(arrayPictures, sortCriteria) {
-  arrayPictures.sort(function (a, b) {
-    if (a[sortCriteria] < b[sortCriteria]) {
-      rerturn - 1;
-    } else if (a[sortCriteria] > b[sortCriteria]) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
+// Get dir name where photographer pictures are located
+// Dir name is based on first nane without "-" if any and replaced by " "
+function getPicturesDirName(photographerName) {
+  const name = photographerName.split(" ")[0];
+  console.log("name", name);
+  return name.includes("-") ? name.replace("-", " ") : name;
 }
+
+// Pictures sortation default criteria when is displayed first time
+const sortationCriteria = "likes";
 
 function checkMediaType(file) {
   let fileExtension = "";
@@ -32,38 +35,130 @@ function checkMediaType(file) {
   }
 }
 
-// A R R A Y  S O R T A T I O N
-/* const sortedPicureBy(criteria) =>
-pictures.sort(function(a,b) {
-    if (`a.${criteria}` < `b.${criteria}`) {
-        return -1;
-    } else if (`a.${criteria}` > `b.${criteria}`) {
-        return 1;
-    } else {
-        return 0;
-    }});
- */
+// P H O T G R A P H E R  H E A D E R
+// ========================================================================
+function displayHeaderPhotographer(data) {
+  console.log("display header: ", data);
+  const { id, name, country, city, tagline, price, portrait } = data;
 
-/* 
-const dataTest = [
-  {
-    title: "Picture Test",
-    likes: "12",
-  },
-]; */
-//
+  function createPhotographerHeader() {
+    // 1 - Photographer header container
+    const photographerHeader = document.createElement("div");
+    photographerHeader.classList.add("photographerHeader");
+
+    // 2 -Photographer profile
+    const photographerProfile = document.createElement("div");
+    photographerProfile.classList.add("photographerProfile");
+
+    const photographerProfile__name = document.createElement("h1");
+    photographerProfile__name.classList.add("photographerProfile__name");
+    photographerProfile__name.textContent = name;
+
+    const photographerProfile__location = document.createElement("p");
+    photographerProfile__location.classList.add(
+      "photographerProfile__location"
+    );
+    photographerProfile__location.textContent = `${city}, ${country}`;
+
+    const photographerProfile__tagline = document.createElement("p");
+    photographerProfile__tagline.classList.add("photographerProfile__tagline");
+    photographerProfile__tagline.textContent = tagline;
+
+    photographerProfile.appendChild(photographerProfile__name);
+    photographerProfile.appendChild(photographerProfile__location);
+    photographerProfile.appendChild(photographerProfile__tagline);
+
+    photographerHeader.appendChild(photographerProfile);
+
+    // Contact button
+    const contact_button = document.createElement("button");
+    contact_button.classList.add("contact_button");
+    contact_button.setAttribute("onclick", "displayModal()");
+    contact_button.textContent = "Contactez-moi";
+
+    photographerHeader.appendChild(contact_button);
+
+    // Photographer picture Id
+    const photographerPictureId = document.createElement("div");
+    photographerPictureId.classList.add("photographerPictureId");
+
+    const photographerPictureId__img = document.createElement("img");
+    photographerPictureId__img.classList.add("photographerPictureId__img");
+
+    photographerPictureId__img.setAttribute(
+      "src",
+      `${pathTo_Photographers_ID_Photos}${portrait}`
+    );
+    photographerPictureId.setAttribute("alt", name);
+
+    photographerPictureId.appendChild(photographerPictureId__img);
+    photographerHeader.appendChild(photographerPictureId);
+
+    return photographerHeader;
+  }
+  return { createPhotographerHeader };
+}
+
+// S O R T A T I O N  D R O P D O W N  L I S T
+// ========================================================================
+const select = document.querySelector(".select");
+const select_menu = document.querySelector(".select-menu");
+const options_list = document.querySelector(".options-list");
+const options = document.querySelectorAll(".option");
+
+// show / hide criterias list
+select.addEventListener("click", () => {
+  options_list.classList.toggle("active");
+  select.querySelector(".fa-angle-down").classList.toggle("rotate-arrow");
+});
+
+options.forEach((option) =>
+  option.addEventListener("click", () => {
+    options.forEach((option) => {
+      option.classList.remove("selected");
+    });
+    options.forEach((option) => {
+      option.classList.remove("hide");
+    });
+    select.querySelector("span").innerHTML = option.innerHTML;
+    option.classList.add("selected");
+    option.classList.add("hide");
+    options_list.classList.toggle("active");
+    const sortationCriteria = option.getAttribute("value");
+    console.log("Option", id, sortationCriteria);
+
+    /* retreiveAPIData(id, sortationCriteria); */
+    // displayThumbnailGallery(pictures);
+    /* init(id, selectedCriteria); */
+    createPhotographerGallery(id, sortationCriteria);
+    select.querySelector(".fa-angle-down").classList.toggle("rotate-arrow");
+  })
+);
+
+function initSortationCriteria(criteria) {
+  // criteria variable is the JSON field used to select and sort pictures (likes / date / title)
+  // loop through all options to:
+  // 1 - add flag "selected"
+  // 2 - setup the in use criteria for the user ( Popularité / Date / Titre)
+  // 3 - hide the criteria from the dropdown list
+  options.forEach((option) => {
+    if (option.getAttribute("value") === criteria) {
+      option.classList.add("selected");
+      select.querySelector("span").innerHTML = option.innerHTML;
+      option.classList.add("hide");
+    }
+  });
+}
+
+// P I C T U R E S  G A L L E R Y
+// ========================================================================
 function thumbnailGalleryTemplate(data) {
   /* const { name, country, city, tagline, price, portrait, id } = data; */
-  const { title, likes, image, video } = data;
-  /* }; */
-  // check if object contains key image or video
+  const { title, likes, image, video, dirName } = data;
 
-  /* const { title, likes, image, video } = data; */
-
-  // const picture = `assets/Photographers_ID_Photos/${portrait}`;
-
-  const pathToPictures = "assets/Photographers_Pictures";
-  const photographerName = "Nabeel";
+  // get directory name
+  // const photographerName = document.querySelector(photographerProfile__name);
+  // console.log("photographerName", photographerName.value);
 
   function getThumbnailCard() {
     // 1 - create the thumbnail card as article
@@ -95,9 +190,9 @@ function thumbnailGalleryTemplate(data) {
       thumbImgCard.classList.add("thumbImgCard__img");
       thumbImgCard.setAttribute(
         "src",
-        `${pathToPictures}/${photographerName}/${image}`
+        `${pathTo_Photographers_Pictures}/${dirName}/${image}`
       );
-      thumbImgCard.setAttribute("alt", image);
+      thumbImgCard.setAttribute("alt", title);
       lightboxLink.appendChild(thumbImgCard);
     }
     // 2Ab The media is a video
@@ -111,7 +206,7 @@ function thumbnailGalleryTemplate(data) {
       const videoSource = document.createElement("source");
       videoSource.setAttribute(
         "src",
-        `${pathToPictures}/${photographerName}/${video}`
+        `${pathTo_Photographers_Pictures}/${dirName}/${video}`
       );
       videoSource.setAttribute("type", "video/mp4");
       thumbImgCard.appendChild(videoSource);
@@ -149,7 +244,8 @@ function thumbnailGalleryTemplate(data) {
     article.appendChild(cardFooter);
     return article;
   }
-  return { title, likes, getThumbnailCard };
+  return { getThumbnailCard };
+  /* return { title, likes, getThumbnailCard }; */
 }
 
 // R E T R E I V E  D A T A  F R O M  J S O N  F I L E
@@ -163,42 +259,68 @@ const urlParams = new URLSearchParams(queryString);
 // Extract the id from the object
 const id = urlParams.get("id");
 
-/* 
-    "id"
-    "photographerId"
-    "title"
-    "image"
-	"likes"
-	"date"
-	"price"
-*/
+// 2 - F R O M  I D  R E T R I E V E
+//              A N D  D I S P L A Y  P H O T O G R A P H E R  D A T A
+async function createPhotographerHeader(id) {
+  try {
+    let response = await fetch(`${pathTo_JSON_Data}photographers.json`);
+    if (!response.ok) throw new Error("no data found");
 
-// 2 - F R O M  I D  R E T R I E V E  P H O T O G R A P H E R  D A T A
-// They are requested for the header
+    let dataJSON = await response.json();
+    console.log("dataJSON: ", dataJSON);
 
+    // Photographers header
+    // ==============================================
+    const { photographers } = dataJSON;
+    console.log("photographers: ", photographers);
+    // Select photographer data
+    const photographerData = photographers.filter(
+      (photographer) => photographer.id === id * 1
+    ); // *1 to transform string to integer
+    console.log("photographerData: ", photographerData[0].name);
+
+    // Extract photographer name to create the dirName
+    const dirName = getPicturesDirName(photographerData[0].name);
+
+    displayHeader(photographerData[0]);
+  } catch (err) {
+    console.warn(err.message);
+  }
+}
 // 3 - R E T R I E V E  P I C T U R E S  D A T A
 // They are requested to feed thumbnail gallery
-
-const pathToData = "data/";
-const pathToPhotographerIdPhoto = "./assets/Photographers_ID_Photos/";
-
-
-
-
-async function getPhotographerPictures(id, sortCriteria) {
+// pictures / video list is retreived and name of photographer
+// dirName is created and added to picture object
+// pictures are sorted according to sortCreteria
+async function createPhotographerGallery(id, sortCriteria) {
   try {
-    let response = await fetch(`${pathToData}photographers.json`);
+    let response = await fetch(`${pathTo_JSON_Data}photographers.json`);
     if (!response.ok) throw new Error("no data found");
-    // console.log(response);
-    let photographers = await response.json();
-    const { media } = photographers;
+    let data = await response.json();
 
-    // Select pictures list for id
+    const { photographers, media } = data; //photographers;
+    // Retreive photographer name from ID
+    console.log("photo", photographers);
+    const photographerName = photographers.filter(
+      (photographer) => photographer.id === id * 1
+    ); // *1 to transform string to integer
+    console.log("photographerData22: ", photographerName[0].name);
+
+    // Extract photographer name to create the dirName
+    const dirName = getPicturesDirName(photographerName[0].name);
+    console.log("dirName: ", dirName);
+
+    // Select pictures / video list for id
     const pictures = media.filter((pict) => pict.photographerId === id * 1); // *1 to transform string to integer
-    console.log("media before sorting: ", pictures);
+    // console.log("media before sorting: ", pictures);
+
+    // Add dirName for each picture / video object
+    pictures.forEach((picture) => (picture.dirName = dirName));
+
+    // sort pictures / video according to sortCreteria
     const sortedPictures = picturesSortation(pictures, sortCriteria);
-    console.log("media after sorting: ", sortedPictures);
-    return sortedPictures;
+
+    displayThumbnailGallery(sortedPictures);
   } catch (err) {
     console.warn(err.message);
   }
@@ -217,11 +339,23 @@ function picturesSortation(pictures, criteria) {
   return sorted;
 }
 
+// async function displayHeader(data) {
+function displayHeader(data) {
+  const headerSection = document.querySelector(".header__section");
+  const headerTemplate = displayHeaderPhotographer(data);
+  const headerGallery = headerTemplate.createPhotographerHeader();
+  headerSection.appendChild(headerGallery);
+}
+
 async function displayThumbnailGallery(sortedPictures) {
   const thumbnailGallerySection = document.querySelector(
     ".thumbnailGallery__section"
   );
 
+  // remove content before adding images according to sortation criteria
+  thumbnailGallerySection.replaceChildren();
+
+  // gallery building
   sortedPictures.forEach((picture) => {
     console.log("pictures for each", picture);
     // retreive the thumbnail card model from the template fed by individual picture data
@@ -229,47 +363,10 @@ async function displayThumbnailGallery(sortedPictures) {
     // build the thumbnail card
     const pictureCard = thumbnailModel.getThumbnailCard();
     // inject the thumbnail card in the DOM
-    console.log("card", pictureCard);
     thumbnailGallerySection.appendChild(pictureCard);
   });
 }
 
-async function init(id, criteria) {
-  const pictures = await getPhotographerPictures(id, criteria);
-  displayThumbnailGallery(pictures);
-}
-
-init(id, "likes");
-
-// S O R T A T I O N  D R O P D O W N  L I S T
-const sortationCriteria = document.getElementById("pictureChoiceCriteria");
-sortationCriteria.addEventListener("change", (e) => {
-  const criteria = e.target.value;
-  console.log("criteria: ", criteria);
-  const gallery = document.querySelector(".thumbnailGallery__section");
-  gallery.replaceChildren();
-  init(id, criteria);
-});
-/* 
-function displayItem() {
-  var button = document.querySelector("button");
-}
-
-const arrow = document.querySelector(".fa-angle-down");
-
-const picturesSortChoices = document.querySelector(".dropdown"); */
-/* picturesSortChoices.addEventListener("click", displayItem); */
-/* console.log(picturesSortChoices:first-child) */
-/* let dropup = true;
-picturesSortChoices.addEventListener("click", function () {
-  if (dropup) {
-    console.log("UP");
-    this.style.height = "170px";
-    arrow.style.transform = "rotate(180deg)";
-    dropup = false;
-  } else {
-    this.style.height = "69px";
-    arrow.style.transform = "rotate(0deg)";
-    dropup = true;
-  }
-}); */
+createPhotographerHeader(id);
+initSortationCriteria(sortationCriteria);
+createPhotographerGallery(id, sortationCriteria);

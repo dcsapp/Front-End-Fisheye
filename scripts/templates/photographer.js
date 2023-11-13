@@ -9,7 +9,7 @@ function photographerTemplate(data) {
     const linkToPhotographerPage = document.createElement("a");
     linkToPhotographerPage.setAttribute(
       "href",
-      `photographer.html?id=${id}&name=${name}`
+      `photographer.html?id=${id}`
     );
 
     const img = document.createElement("img");

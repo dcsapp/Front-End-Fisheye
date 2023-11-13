@@ -25,61 +25,33 @@
       <img src="assets/images/logo.png" class="logo" />
     </a>
     </header>
+    
     <main id="main">
-      <div class="photograph-header">
-        <div class="photographerProfile">
-          <h1 class="photographerProfile__name">MIMI</h1>
-          <p class="photographerProfile__location">London, UK</p>
-          <p class="photographerProfile__tagline">Vive la photo</p>
-        </div>
-
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-
-        <div>
-          <img
-            class="photographerPortrait__img"
-            src="./assets/Photographers_ID_Photos/MimiKeel.jpg"
-            alt="error"
-          />
-        </div>
-      </div>
+      <div class="header__section"></div>
+      
+     
 
       <section class="picture-sortation">
         <p>Trier par</p>
 
-        <!-- <div class="dropdown">
-          <div class="dropdown__item">
-            <p>Popularité</p>
-           
+        <div class="select-menu">
+          <div class="select">
+            <span></span>
             <i class="fa-solid fa-angle-down"></i>
           </div>
-          <div class="dropdown__item">
-            <p>Date</p>
+          <div class="options-list">
+            <div class="option" value="likes">Popularité</div>
+            <div class="option" value="date">Date</div>
+            <div class="option" value="title">Titre</div>
           </div>
-          <div class="dropdown__item">
-            <p>Titre</p>
-          </div>
-        </div> -->
-         <!-- <i class="fa-solid fa-angle-up"></i>  -->
-
-        
-      <div class="" >
-        <select name="sortPictures" id="pictureChoiceCriteria">
-          <option value="likes" selected>Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
-        <span class="fa-solid fa-angle-down"></span> 
-        <span class="custom-arrow"></span>
-      </div>
+        </div>
 
       </section>
 
       <section class="thumbnailGallery__section">
         <!-- Photographer pictures / video gallery location -->
       </section>
+
     </main>
     <div id="contact_modal">
       <div class="modal">
@@ -101,3 +73,25 @@
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
+
+ <!-- <div class="photographHeader"> -->
+        
+        <!-- <div class="photographerProfile">
+          <h1 class="photographerProfile__name">Nabeel Bradford</h1>
+          <h1 class="photographerProfile__name">Mimi Keel</h1>
+          <p class="photographerProfile__location">Mexico City, Mexico</p>
+          <p class="photographerProfile__tagline">Toujours aller de l'avant</p>
+        </div>
+
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
+
+        <div class="photographerPictureId" >
+          <img
+            class="photographerPortrait__img"
+            src="./assets/Photographers_ID_Photos/NabeelBradford.jpg"
+            alt="error"
+          />
+        </div> -->
+    <!--   </div> -->

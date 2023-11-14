@@ -236,6 +236,8 @@ function thumbnailGalleryTemplate(data) {
     const cardFooterLikeHeart = document.createElement("i");
     cardFooterLikeHeart.classList.add("fa-solid");
     cardFooterLikeHeart.classList.add("fa-heart");
+    cardFooterLikeHeart.classList.add("addLikes");
+    cardFooterLikeHeart.setAttribute("data-oneLikeAdded", "false");
     cardFooterLike.appendChild(cardFooterLikeHeart);
 
     // 4 Build the full article / thumbnail card
@@ -310,9 +312,12 @@ async function createPhotographerGallery(id, sortCriteria) {
     const dirName = getPicturesDirName(photographerName[0].name);
     console.log("dirName: ", dirName);
 
+    // Retreive price
+    const photographerPrice = photographerName[0].price;
+
     // Select pictures / video list for id
     const pictures = media.filter((pict) => pict.photographerId === id * 1); // *1 to transform string to integer
-    // console.log("media before sorting: ", pictures);
+    console.log("media before sorting: ", pictures);
 
     // Add dirName for each picture / video object
     pictures.forEach((picture) => (picture.dirName = dirName));
@@ -320,7 +325,47 @@ async function createPhotographerGallery(id, sortCriteria) {
     // sort pictures / video according to sortCreteria
     const sortedPictures = picturesSortation(pictures, sortCriteria);
 
+    // Calculate likes number
+    let likesNumber = 0;
+    pictures.forEach((picture) => {
+      likesNumber += picture.likes;
+    });
+    console.log("likenumber: ", likesNumber);
+    const ratesField = document.querySelector(".rate");
+    ratesField.textContent = likesNumber;
+
+    const rate = `${photographerPrice} \u20AC / jour`; // euro entity
+    const priceField = document.querySelector(".price");
+    priceField.textContent = rate;
+
     displayThumbnailGallery(sortedPictures);
+
+    function addOneLike(event) {
+      // Get the current picture heart
+      // and acces to selected likes number => previousElementSibling.innerText
+      // convert to an integer *1
+      // and add 1   -oneLikeAdded
+      const isUpdated = event.currentTarget.dataset.onelikeadded; // datasetlowercase
+      if (isUpdated === "true") {
+      } else {
+        const updatedLikeRate =
+          event.currentTarget.previousElementSibling.innerText * 1 + 1;
+        // Display updated image like number
+        event.currentTarget.previousElementSibling.innerText = updatedLikeRate;
+        // Prevent further update
+        event.currentTarget.dataset.onelikeadded= "true"
+        // Update total like
+        likesNumber += 1;
+        // Update total likes display
+        // Update display total like
+        ratesField.textContent = likesNumber;
+      }
+    }
+
+    document.querySelectorAll(".addLikes").forEach((addLikes) => {
+      addLikes.addEventListener("click", addOneLike);
+    });
+   
   } catch (err) {
     console.warn(err.message);
   }
@@ -370,3 +415,7 @@ async function displayThumbnailGallery(sortedPictures) {
 createPhotographerHeader(id);
 initSortationCriteria(sortationCriteria);
 createPhotographerGallery(id, sortationCriteria);
+
+// L I K E S  H A N D L I N G
+const likeCard = document.querySelectorAll(".addLikes");
+console.log("like cards: ", likeCard);

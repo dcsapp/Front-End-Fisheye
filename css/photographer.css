@@ -337,3 +337,44 @@ p {
 .thumbImgCard__footer__like i {
   color: #901c1c;
 }
+
+.likesPriceBox {
+    position: fixed;
+    bottom: -10px;
+    right: 50px;
+    width: 376px;
+    height: 89px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    background: #db8876;
+    border-radius: 5px;
+}
+
+.likes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.rate {
+    margin: 0 10px;
+}
+
+.price {
+    width: 170px;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+.fa-heart:hover {
+    color: green;
+    cursor: pointer;
+}

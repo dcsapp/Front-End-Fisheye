@@ -52,11 +52,25 @@
         <!-- Photographer pictures / video gallery location -->
       </section>
 
+      <div class="likesPriceBox">
+        <div class="likes">
+          <div class="rate">
+            
+          </div>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="price">
+          200 euros
+        </div>
+      </div>
+
     </main>
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <h2>Contactez-moi
+            <span></span>
+          </h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 
@@ -64,6 +78,15 @@
           <div>
             <label>Prénom</label>
             <input />
+            <label>Nom</label>
+            <input />
+            <label>Email</label>
+            <input />
+            <label>Votre message</label>
+            <textarea id="story" name="story" rows="15" cols="85">
+              It was a dark and stormy night...
+              </textarea>
+            <!-- <input /> -->
           </div>
           <button class="contact_button">Envoyer</button>
         </form>

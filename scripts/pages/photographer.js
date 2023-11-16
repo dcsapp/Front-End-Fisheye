@@ -18,6 +18,9 @@ function getPicturesDirName(photographerName) {
 // Pictures sortation default criteria when is displayed first time
 const sortationCriteria = "likes";
 
+// Pictures likes list to persinst any like update
+picturesLikeStatus = [];
+
 function checkMediaType(file) {
   let fileExtension = "";
   console.log("file: ", file);
@@ -35,7 +38,7 @@ function checkMediaType(file) {
   }
 }
 
-// P H O T G R A P H E R  H E A D E R
+// P H O T O G R A P H E R  H E A D E R
 // ========================================================================
 function displayHeaderPhotographer(data) {
   console.log("display header: ", data);
@@ -325,14 +328,38 @@ async function createPhotographerGallery(id, sortCriteria) {
     // sort pictures / video according to sortCreteria
     const sortedPictures = picturesSortation(pictures, sortCriteria);
 
+    // L I K E S  H A N D L I N G
+    // Create a list of likes of selected picture
+    // if (picturesLikeStatus.length === 0) {
+      // Create initial list
+  /*     pictures.forEach((picture) => {
+        picturesLikeStatus.push({
+          pictId: picture.id,
+          pictNbr: picture.likes,
+          updated: "false",
+        });
+      });
+      console.log("like list: ", picturesLikeStatus);
+    } else {
+        console.log("like list not empty: ", picturesLikeStatus);
+      alert(picturesLikeStatus);
+    }
+
+ */
+
+
+
+
+
+
     // Calculate likes number
-    let likesNumber = 0;
+    let totalLikesNumber = 0;
     pictures.forEach((picture) => {
-      likesNumber += picture.likes;
+      totalLikesNumber += picture.likes;
     });
-    console.log("likenumber: ", likesNumber);
+    console.log("likenumber: ", totalLikesNumber);
     const ratesField = document.querySelector(".rate");
-    ratesField.textContent = likesNumber;
+    ratesField.textContent = totalLikesNumber;
 
     const rate = `${photographerPrice} \u20AC / jour`; // euro entity
     const priceField = document.querySelector(".price");
@@ -353,19 +380,24 @@ async function createPhotographerGallery(id, sortCriteria) {
         // Display updated image like number
         event.currentTarget.previousElementSibling.innerText = updatedLikeRate;
         // Prevent further update
-        event.currentTarget.dataset.onelikeadded= "true"
+        event.currentTarget.dataset.onelikeadded = "true";
         // Update total like
-        likesNumber += 1;
+        totalLikesNumber += 1;
         // Update total likes display
-        // Update display total like
-        ratesField.textContent = likesNumber;
+        ratesField.textContent = totalLikesNumber;
+        // Just for fun: icone changed when picture has been clicked
+        event.currentTarget.classList.remove("fa-heart");
+        event.currentTarget.classList.add("fa-heart-circle-plus");
       }
     }
 
     document.querySelectorAll(".addLikes").forEach((addLikes) => {
       addLikes.addEventListener("click", addOneLike);
+
+      // Photographer name in modal
+      const modalName = document.querySelector(".modalName");
+      modalName.textContent = photographerName[0].name;
     });
-   
   } catch (err) {
     console.warn(err.message);
   }
@@ -419,3 +451,7 @@ createPhotographerGallery(id, sortationCriteria);
 // L I K E S  H A N D L I N G
 const likeCard = document.querySelectorAll(".addLikes");
 console.log("like cards: ", likeCard);
+
+// F O R M
+/* const modalName = document.querySelector(".madalName");
+modalName.innerText = name; */

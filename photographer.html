@@ -22,14 +22,12 @@
   <body>
     <header>
       <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" />
-    </a>
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
-    
+
     <main id="main">
       <div class="header__section"></div>
-      
-     
 
       <section class="picture-sortation">
         <p>Trier par</p>
@@ -45,7 +43,6 @@
             <div class="option" value="title">Titre</div>
           </div>
         </div>
-
       </section>
 
       <section class="thumbnailGallery__section">
@@ -54,42 +51,80 @@
 
       <div class="likesPriceBox">
         <div class="likes">
-          <div class="rate">
-            
-          </div>
+          <div class="rate"></div>
           <i class="fa-solid fa-heart"></i>
         </div>
-        <div class="price">
-          200 euros
-        </div>
+        <div class="price">200 euros</div>
       </div>
-
     </main>
     <div id="contact_modal">
       <div class="modal">
+
         <header>
-          <h2>Contactez-moi
-            <span></span>
+          <h2>
+            Contactez-moi
+            <br/>
+            <span class="modalName"></span>
           </h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-            <label>Nom</label>
-            <input />
-            <label>Email</label>
-            <input />
-            <label>Votre message</label>
-            <textarea id="story" name="story" rows="15" cols="85">
-              It was a dark and stormy night...
-              </textarea>
+        <form
+          id="form"
+          name="form"
+          novalidate
+          autocomplete="off"
+        >
+          <div class="formGroup">
+            <label for="firstname">Prénom</label>
+            <input
+              id="firstname"
+              class="textControl"
+              name="firstname"
+              type="text"
+              minlength="2"
+              placeholder=""
+              value=""
+            />
+          </div>
+          <div class="formGroup">
+            <label for="lastname">Nom</label>
+            <input
+              id="lastname"
+              class="textControl"
+              name="lastname"
+              type="text"
+              minlength="2"
+              placeholder=""
+              value=""
+            />
+          </div>
+          <div class="formGroup">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              class="textControl"
+              name="email"
+              type="email"
+              placeholder=""
+              value=""
+            />
+          </div>
+          <div class="formGroup">
+            <label for="message">Votre message</label>
+            <textarea id="message" class="" name="message" rows="" cols=""> </textarea>
             <!-- <input /> -->
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
+
+        <div class="lightbox">
+          <button class="lightbox__close"></button>
+          <button class="lightbox__nextPicture"></button>
+          <button class="lightbox__previousPicture"></button>
+          <div class="lightbox__displayedImage"></div>
+        </div>
+
       </div>
     </div>
     <script src="./scripts/pages/photographer.js"></script>
@@ -97,9 +132,33 @@
   </body>
 </html>
 
- <!-- <div class="photographHeader"> -->
-        
-        <!-- <div class="photographerProfile">
+<!-- 
+
+<label>Nom</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                  minlength="2"
+                  value=""
+                /><br />
+              </div>
+              <div class="formData">
+                <label>E-mail</label><br />
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  value=""
+                /><br />
+              </div>
+ -->
+
+<!-- <div class="photographHeader"> -->
+
+<!-- <div class="photographerProfile">
           <h1 class="photographerProfile__name">Nabeel Bradford</h1>
           <h1 class="photographerProfile__name">Mimi Keel</h1>
           <p class="photographerProfile__location">Mexico City, Mexico</p>
@@ -117,4 +176,4 @@
             alt="error"
           />
         </div> -->
-    <!--   </div> -->
+<!--   </div> -->

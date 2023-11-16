@@ -1,8 +1,6 @@
 :root {
-    --option-height: 51px;
-   }
-
-
+  --option-height: 51px;
+}
 
 #contact_modal {
   display: none;
@@ -60,7 +58,7 @@ header a {
 
 /* H E A D E R - 3 - photographer Contact button and Modal */
 .contact_button {
-  margin-top: 137px;
+  margin-top: 37px;
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -71,6 +69,20 @@ header a {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+#contact_modal {
+  /* overlay */
+  display: none;
+  padding-top: 69px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
@@ -86,18 +98,23 @@ header a {
 }
 
 .modal header {
+  position: relative;
   justify-content: space-between;
   width: 100%;
+  height: auto;
 }
 
 .modal header img {
+  position: absolute;
   cursor: pointer;
+  top: 0px;
+  right: 0px;
 }
 
 .modal header h2 {
   font-size: 64px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
 }
 
 form {
@@ -105,6 +122,7 @@ form {
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 50px;
 }
 
 form label {
@@ -125,7 +143,83 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+
+  font-size: 24px;
 }
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 170px;
+  margin: 0;
+  padding: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* 
+margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+*/
+
+/* label {
+    font-family: var(--font-default);
+    font-size: 17px;
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 11px;
+  } */
+
+/*  input {
+    padding: 8px;
+    border: 0.8px solid #ccc;
+    outline: none;
+  } */
+.textControl {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+}
+.formGroup[data-error]::after {
+  content: attr(data-error);
+  font-size: 20px;
+  font-weight: bold;
+  /* color: #e54858; */
+  color: #fff;
+  display: block;
+  margin-top: 7px;
+  /* margin-bottom: 7px; */
+  text-align: left;
+  line-height: 0.5;
+  opacity: 0;
+  transition: 0.3s;
+}
+.formGroup[data-error-visible="true"]::after {
+  opacity: 1;
+}
+.formGroup[data-error-visible="true"] .textControl {
+  border: 2px solid #e54858;
+}
+/* 
+  input[data-error]::after {
+      content: attr(data-error);
+      font-size: 0.4em;
+      color: red;
+  }
+
+/*  */
 
 /* H E A D E R - 4 - photographer portrait */
 .photographerPictureId__img {
@@ -164,96 +258,72 @@ form input {
 
 /* dropdown list */
 
+.select-menu {
+  width: 170px;
+  min-height: 69px;
+  background-color: #901c1c;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  left: 100px;
+  z-index: 1;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 
-  
-  .select-menu {
-    width: 170px;
-    min-height: 69px;
-    background-color: #901c1c;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    left: 100px;
-    z-index: 1;
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-  
-  .select {
-    width: 100%;
-    background-color: #901c1c;
-    padding: 0 10px;
-    height: 69px;
-    flex-shrink: 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 6px; /*  6px 0 0; */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-  }
-  
-  .rotate-arrow {
-    transform: rotate(180deg);
-    transition: 500ms;
-  }
-  
-  .option {
-    width: 100%;
-    height: var(--option-height);/* 51px; */
-    background-color: #901c1c;
-    margin: 1px 0;
-    padding: 15px 0;
-    font-weight: bold;
-    font-size: 18px;
-    border-top: 1px solid #fff;
-  }
-  
-  .option.hide {
-    display: none;
-  }
-  
-  .options-list {
-    width: 100%;
-    background-color: #901c1c;
-    border-radius: 0 0 6px 6px;
-    padding: 0 10px;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    height: 0;
-    overflow: hidden;
-    transition: 500ms;
-  }
-  
-  .options-list.active {
-    height: calc(var(--option-height) * 2);
-  }
+.select {
+  width: 100%;
+  background-color: #901c1c;
+  padding: 0 10px;
+  height: 69px;
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 6px; /*  6px 0 0; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.rotate-arrow {
+  transform: rotate(180deg);
+  transition: 500ms;
+}
 
+.option {
+  width: 100%;
+  height: var(--option-height); /* 51px; */
+  background-color: #901c1c;
+  margin: 1px 0;
+  padding: 15px 0;
+  font-weight: bold;
+  font-size: 18px;
+  border-top: 1px solid #fff;
+}
 
+.option.hide {
+  display: none;
+}
 
+.options-list {
+  width: 100%;
+  background-color: #901c1c;
+  border-radius: 0 0 6px 6px;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  height: 0;
+  overflow: hidden;
+  transition: 500ms;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.options-list.active {
+  height: calc(var(--option-height) * 2);
+}
 
 /* S E C T I O N  thumbnailGallery */
 .thumbnailGallery__section {
@@ -339,42 +409,41 @@ p {
 }
 
 .likesPriceBox {
-    position: fixed;
-    bottom: -10px;
-    right: 50px;
-    width: 376px;
-    height: 89px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    
-    background: #db8876;
-    border-radius: 5px;
+  position: fixed;
+  bottom: -10px;
+  right: 50px;
+  width: 376px;
+  height: 89px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #db8876;
+  border-radius: 5px;
 }
 
 .likes {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 170px;
-    font-size: 24px;
-    text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  font-size: 24px;
+  text-align: center;
 }
 
 .rate {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .price {
-    width: 170px;
-    font-size: 24px;
-    text-align: center;
+  width: 170px;
+  font-size: 24px;
+  text-align: center;
 }
 
-
 .fa-heart:hover {
-    color: green;
-    cursor: pointer;
+  color: green;
+  cursor: pointer;
 }

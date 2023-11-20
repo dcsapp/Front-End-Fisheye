@@ -362,9 +362,9 @@ margin: 0;
   /*  border: 1px solid black; */
 }
 
-.thumbImgCard__img a {
-  cursor: pointer;
-}
+ .medium:hover {
+    cursor: pointer;
+ }
 
 .thumbImgCard__footer {
   width: 350px;

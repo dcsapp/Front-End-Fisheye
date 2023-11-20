@@ -2,7 +2,7 @@
 
 // C O N S T A N T S
 // Paths to assets
-const pathTo_Photographers_Pictures = "./assets/Photographers_Pictures/";
+const pathTo_Photographers_Pictures = "./assets/Photographers_Pictures";
 const pathTo_Photographers_ID_Photos = "./assets/Photographers_ID_Photos/";
 // Path to JSON data
 const pathTo_JSON_Data = "./data/";
@@ -172,25 +172,36 @@ function thumbnailGalleryTemplate(data) {
     article.classList.add("thumbImgCard");
 
     // 2 - create image container with link to lightbox
-    const lightboxLink = document.createElement("a");
+    /* const lightboxLink = document.createElement("a");
     article.classList.add("thumbImgCard");
     lightboxLink.setAttribute("href", "#");
+    lightboxLink.classList.add("medium");
+    lightboxLink.setAttribute("onclick", "return displayLightbox()"); */
+
+    /*  */
+    const lightboxLink = document.createElement("div");
+    lightboxLink.classList.add("medium");
+    /*  */
 
     // 2A Check type of media: image or video
     let mediaType = "";
     if (data.hasOwnProperty("image")) {
       mediaType = "image";
+      lightboxLink.dataset.mediumType = "image";
       const { title, likes, image } = data;
     }
     if (data.hasOwnProperty("video")) {
       mediaType = "video";
+      lightboxLink.dataset.mediumType = "video";
       const { title, likes, video } = data;
     }
 
     // 2Aa The media is an image
     if (mediaType === "image") {
       const thumbImgCard = document.createElement("img");
-      thumbImgCard.classList.add("thumbImgCard__img");
+      thumbImgCard.classList.add("thumbImgCard__img"); // , "azert"
+      //
+
       thumbImgCard.setAttribute(
         "src",
         `${pathTo_Photographers_Pictures}/${dirName}/${image}`
@@ -201,7 +212,7 @@ function thumbnailGalleryTemplate(data) {
     // 2Ab The media is a video
     if (mediaType === "video") {
       const thumbImgCard = document.createElement("video");
-      thumbImgCard.classList.add("thumbImgCard__vid");
+      thumbImgCard.classList.add("thumbImgCard__vid"); // , "azert"
       thumbImgCard.setAttribute("controls", "width=350");
       /* thumbImgCard.setAttribute("width", "100%"); */
 
@@ -331,8 +342,8 @@ async function createPhotographerGallery(id, sortCriteria) {
     // L I K E S  H A N D L I N G
     // Create a list of likes of selected picture
     // if (picturesLikeStatus.length === 0) {
-      // Create initial list
-  /*     pictures.forEach((picture) => {
+    // Create initial list
+    /*     pictures.forEach((picture) => {
         picturesLikeStatus.push({
           pictId: picture.id,
           pictNbr: picture.likes,
@@ -346,11 +357,6 @@ async function createPhotographerGallery(id, sortCriteria) {
     }
 
  */
-
-
-
-
-
 
     // Calculate likes number
     let totalLikesNumber = 0;
@@ -398,6 +404,21 @@ async function createPhotographerGallery(id, sortCriteria) {
       const modalName = document.querySelector(".modalName");
       modalName.textContent = photographerName[0].name;
     });
+
+
+// +++++++++++++++ List of picture  ++++++++++++++++++
+
+    let mediumList = document.querySelectorAll(".medium");
+    // console.log("mediumList: ", mediumList);
+    // Add event listener to each image / video to trigger lightbox
+    document.querySelectorAll(".medium").forEach((medium, index) => {
+      medium.addEventListener("click",launchLightbox);// displayLightbox);
+      console.log("medium: ", medium, index);
+    });
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
   } catch (err) {
     console.warn(err.message);
   }
@@ -455,3 +476,31 @@ console.log("like cards: ", likeCard);
 // F O R M
 /* const modalName = document.querySelector(".madalName");
 modalName.innerText = name; */
+
+// ======== Lightbox ===============================
+
+console.log("=============================");
+//           console.log ("Sorted Pictures", sortedPictures[5]);
+// test_index = sortedPictures.findIndex.call  //sortedPictures.indexOf();
+//           const test_index = sortedPictures.map(e => e.id).indexOf(2523434634);
+//           console.log ("index in Pictures", test_index);
+
+
+const tyty = document.getElementsByClassName("medium");
+// const imageLocation = tyty[0].src//.children[0].childNodes[0].src;
+console.log("tyty: ", tyty);
+
+console.log("=============================");
+//  document.querySelectorAll(".azert").forEach((azert) => {
+//    azert.addEventListener("click", displayLightbox)
+//    console.log('azert: ', azert.src)});
+
+//    const imageLocation = tyty[2].children[0].childNodes[0].src;//[1];//.getAttribute("src");
+//    console.log('imageLocation: ', imageLocation.split('/assets/').pop());
+
+/* 
+        document.querySelectorAll(".medium").forEach((medium) => {
+            medium.addEventListener("click", displayLightbox)
+            console.log('medium: ', medium)});
+             */
+// ======== Lightbox E N D ===============================

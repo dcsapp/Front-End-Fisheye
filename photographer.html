@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -57,24 +58,22 @@
         <div class="price">200 euros</div>
       </div>
     </main>
+
+    <div id="myLightbox"></div>
+
+
     <div id="contact_modal">
       <div class="modal">
-
         <header>
           <h2>
             Contactez-moi
-            <br/>
+            <br />
             <span class="modalName"></span>
           </h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 
-        <form
-          id="form"
-          name="form"
-          novalidate
-          autocomplete="off"
-        >
+        <form id="form" name="form" novalidate autocomplete="off">
           <div class="formGroup">
             <label for="firstname">Prénom</label>
             <input
@@ -112,68 +111,58 @@
           </div>
           <div class="formGroup">
             <label for="message">Votre message</label>
-            <textarea id="message" class="" name="message" rows="" cols=""> </textarea>
+            <textarea id="message" class="" name="message" rows="" cols="">
+            </textarea>
             <!-- <input /> -->
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
-
-        <div class="lightbox">
-          <button class="lightbox__close"></button>
-          <button class="lightbox__nextPicture"></button>
-          <button class="lightbox__previousPicture"></button>
-          <div class="lightbox__displayedImage"></div>
-        </div>
-
       </div>
     </div>
-    <script src="./scripts/pages/photographer.js"></script>
-    <script src="./scripts/utils/contactForm.js"></script>
-  </body>
-</html>
-
 <!-- 
-
-<label>Nom</label><br />
-                <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
-                  minlength="2"
-                  value=""
-                /><br />
-              </div>
-              <div class="formData">
-                <label>E-mail</label><br />
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                  value=""
-                /><br />
-              </div>
- -->
-
-<!-- <div class="photographHeader"> -->
-
-<!-- <div class="photographerProfile">
-          <h1 class="photographerProfile__name">Nabeel Bradford</h1>
-          <h1 class="photographerProfile__name">Mimi Keel</h1>
-          <p class="photographerProfile__location">Mexico City, Mexico</p>
-          <p class="photographerProfile__tagline">Toujours aller de l'avant</p>
-        </div>
-
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
+    <div id="lightbox__overlay">
+      <div class="lightbox__container">
+         -->
+        <!-- 
+        <button class="lightbox__close">
+          <img src="./assets/icons/close.svg" onclick="closeLightbox()" />
         </button>
 
-        <div class="photographerPictureId" >
+        <button class="lightbox__nextPicture">
+          <img src="assets/icons/chevron_right.svg" />
+        </button>
+
+        <button class="lightbox__previousPicture">
+          <img src="assets/icons/chevron_left.svg" />
+        </button>
+ -->
+
+<!--         <div class=" close cl">
+          <img src="./assets/icons/close.svg" onclick="closeLightbox()" />
+        </div>
+
+        <div class="arrow">
+          <img src="assets/icons/chevron_right.svg" />
+        </div>
+        <div class="arrow le">
+          <img src="assets/icons/chevron_left.svg" />
+        </div>
+
+        <div class="lightbox__displayedImage">
           <img
-            class="photographerPortrait__img"
-            src="./assets/Photographers_ID_Photos/NabeelBradford.jpg"
-            alt="error"
+            src="./assets/Photographers_Pictures/Ellie Rose/Architecture_Connected_Curves.jpg"
+            alt=""
           />
-        </div> -->
-<!--   </div> -->
+        </div>
+
+        <div class="pictureName"></div>
+      </div>
+    </div>
+ -->
+  
+
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/lightBox.js"></script>
+  </body>
+</html>

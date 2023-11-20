@@ -271,3 +271,14 @@ const page = retreiveAPIData_BIS(id);
 console.log("page", page.photographerHeader());
 mHeader.photographerHeader;
  */
+
+
+
+
+ ===== 18 13NOV23
+  // 2 - create image container with link to lightbox
+    const lightboxLink = document.createElement("a");
+    article.classList.add("thumbImgCard");
+    /* lightboxLink.setAttribute("href", "#"); */
+    lightboxLink.classList.add("medium");
+    lightboxLink.setAttribute("onclick", displayLightbox);

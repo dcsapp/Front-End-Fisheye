@@ -57,8 +57,8 @@ header a {
 }
 
 /* H E A D E R - 3 - photographer Contact button and Modal */
-.contact_button {
-  margin-top: 37px;
+.photographerHeader .contact_button {
+  margin-top: 137px;
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -444,6 +444,6 @@ p {
 }
 
 .fa-heart:hover {
-  color: green;
+  /* color: green; */
   cursor: pointer;
 }

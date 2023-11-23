@@ -1,64 +1,80 @@
 // L I G H T  B O X
 // ============================================================
+let index = 0;
+let mediumType = "";
+let lightboxIsDisplayed = false;
 
-
-
-
-
-
-function lightboxHandleMediumContent() {
-  const image = "./assets/Photographers_Pictures/Marcel/Travel_Tower.jpg";
-  const video =
-    "./assets/Photographers_Pictures/Tracy/Art_Wooden_Horse_Sculpture.mp4";
-  const medium = "image";
-
-  function createMediumContent() {
-    if (medium === "image") {
-      const lightbox__image = document.createElement("img");
-      lightbox__image.classList.add("lbImage");
-      lightbox__image.setAttribute("src", image);
-      return lightbox__image;
-    }
-    if (medium === "video") {
-      const lightbox__video = document.createElement("video");
-      lightbox__video.setAttribute("controls", "width=350");
-      const videoSource = document.createElement("source");
-      videoSource.setAttribute("src", video);
-      videoSource.setAttribute("type", "video/mp4");
-      lightbox__video.appendChild(videoSource);
-      return lightbox__video;
-    }
-    return createMediumContent
-  }
+//console.log("sortedPictures from livebox", sortedPictures);
+// function getMediumIndex 
+function getFirstMedium(e) {
+    index = e.currentTarget.dataset.index*1;
+    // let mediumType = e.currentTarget.dataset.mediumType
+    console.log("mediumList.length", mediumList.length, index);
+    myLightbox.style.display = "flex";
+    lightboxIsDisplayed = true;
+    displayLightbox(index)
 }
+    
+console.log('Current index: ', index);
+/* function displayLightbox(index, mediumType) { */
+function displayLightbox(n) {
+    console.log('Current index: ', index);
+    // Rmk: index starts from 0
+    // 1 - Check if index is in index range
+    // 2 - check the type of medium (image or video)
+    // 3 - according to type of medium:
+    //      a - get path to the medium
+    //      b - get the medium's title  
 
+    if (n > mediumList.length-1) {
+        index = 0;
+    } else if (n < 0) {
+        index = mediumList.length -1;
+    };
+    
+    mediumType = mediumList[index].getAttribute('data-medium-type');
 
+    let mediumTitle = "";
+   
+    if (mediumType === "image") {
+        console.log("path to image: ", mediumList[index].firstChild.getAttribute('src'));
+        console.log("alt / image: ", mediumList[index].firstChild.getAttribute('alt'));
+        mediumTitle =  mediumList[index].firstChild.getAttribute('alt');
+        lightbox__medium.replaceChildren();
+        const lightbox__image = document.createElement("img");
+        lightbox__image.classList.add("lbImage");
+        lightbox__image.setAttribute(
+            "src", mediumList[index].firstChild.getAttribute('src')
+            );
+        lightbox__medium.appendChild(lightbox__image);
+    }; 
+
+    if (mediumType === "video") {
+        lightbox__medium.replaceChildren();
+        console.log("path to video: ", mediumList[index].firstChild.firstElementChild.getAttribute('src'));
+        console.log("alt / video: ", mediumList[index].firstChild.firstElementChild.getAttribute('alt'));
+        mediumTitle =  mediumList[index].firstChild.firstElementChild.getAttribute('alt');
+        const lightbox__video = document.createElement("video");
+        lightbox__video.classList.add('lbVideo');
+        lightbox__video.setAttribute("src",  mediumList[index].firstChild.firstElementChild.getAttribute('src'));
+        lightbox__video.setAttribute("controls", "width=350");
+        lightbox__medium.appendChild(lightbox__video); 
+    };
+    const lightbox__lbTitle = document.querySelector(".lbTitle p");
+    lightbox__lbTitle.textContent = mediumTitle;
+};
 
 const myLightbox = document.getElementById("myLightbox");
 
 // lightbox structure
+// ======================================================
+// window overlay
 const lightbox__overlay = document.createElement("div");
 lightbox__overlay.classList.add("lbOverlay");
-//
+// lightbox content : 
 const lightbox__content = document.createElement("div");
 lightbox__content.classList.add("lbContent");
-//
-// if it is an image displayed in lightbox
-const lightbox__image = document.createElement("img");
-lightbox__image.classList.add("lbImage");
-lightbox__image.setAttribute(
-  "src",
-  "./assets/Photographers_Pictures/Marcel/Travel_Tower.jpg"
-);
-lightbox__content.appendChild(lightbox__image);
-//
-// if video is displayed in lightbox
-// const lightbox__video = document.createElement("video");
-/* lightbox__image.classList.add('lbVideo');
-lbVideo
-lightbox__image.setAttribute("src", "./assets/Photographers_Pictures/Ellie Rose/Sport_Tricks_in_the_air.mp4");
-lightbox__content.appendChild(lightbox__image); */
-//
+
 //
 // close button
 const lightbox__btnClose = document.createElement("div");
@@ -85,51 +101,65 @@ chevronRight.setAttribute("src", "./assets/icons/chevron_right.svg");
 lightbox__btnNext.appendChild(chevronRight);
 lightbox__content.appendChild(lightbox__btnNext);
 //
+// medium container: inage / video
+const lightbox__medium = document.createElement("div");
+lightbox__medium.classList.add("lbMedium");
+lightbox__content.appendChild(lightbox__medium);
 lightbox__overlay.appendChild(lightbox__content);
+//
+// title container
+const lightbox__title = document.createElement("div");
+lightbox__title.classList.add("lbTitle");
+const lightbox__text = document.createElement("p");
+lightbox__title.appendChild(lightbox__text);
+lightbox__content.appendChild(lightbox__title);
 // ====== End lightbox structure =============================
-
 myLightbox.appendChild(lightbox__overlay);
+//
 
-
-
-
-function launchLightbox(e) {
-    // get the picture clicked in the gallery and display it in lightbox
-    console.log("Target: ", e.currentTarget.children); // , pathTo_Photographers_Pictures);
-    displayLightbox( e.currentTarget.children[0].src);
-    // const clickedPicture = e.currentTarget.children[0].src;
-    myLightbox.style.display = "flex";
+function shiftMedium(shift) {
+    displayLightbox(index += shift)
 }
-function displayLightbox(image) {
-    lightbox__image.setAttribute("src", image);  
-    // test_index = sortedPictures.findIndex.call  //sortedPictures.indexOf();
-    //           const test_index = sortedPictures.map(e => e.id).indexOf(2523434634);
-    //           console.log ("index in Pictures", test_index);
-}
+
 
 function closeLightbox() {
   myLightbox.style.display = "none";
+  lightboxIsDisplayed = false;
 }
 
 function nextSlide() {
-  console.log("Next");
-  lightbox__image.setAttribute(
-    "src",
-    "./assets/Photographers_Pictures/Marcel/Travel_OpenMountain.jpg"
-  );
+  shiftMedium(1);
 }
-
-const test1 =
-  "./assets/Photographers_Pictures/Tracy/Art_Wooden_Horse_Sculpture.mp4";
-const test2 = "./assets/Photographers_Pictures/Marcel/Travel_Tower.jpg";
 
 function previousSlide() {
-  console.log("Previous");
-  lightbox__image.setAttribute("src", test2);
+  shiftMedium(-1); 
 }
 
+// M O U S E  L I G H T B O X  H A N D L I N G
 document.querySelector(".lbBtnClose").addEventListener("click", closeLightbox);
 document.querySelector(".lbBtnNext").addEventListener("click", nextSlide);
 document
   .querySelector(".lbBtnPrevious")
   .addEventListener("click", previousSlide);
+
+
+// K E Y B O A R D  L I G H T B O X  H A N D L I N G 
+document.body.addEventListener("keydown", (e) => {
+  if (lightboxIsDisplayed) {
+    switch (e.code) {
+      case "Escape":
+        closeLightbox();
+        console.log("event: ", e);
+        break;
+      case "ArrowLeft":
+        previousSlide();
+        console.log("event: ", e);
+        break;
+      case "ArrowRight":
+        nextSlide();
+        console.log("event: ", e);
+        break;
+    }
+  }
+});
+

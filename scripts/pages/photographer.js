@@ -7,6 +7,9 @@ const pathTo_Photographers_ID_Photos = "./assets/Photographers_ID_Photos/";
 // Path to JSON data
 const pathTo_JSON_Data = "./data/";
 
+let sortedPictures = [];
+let mediumList = [];
+
 // Get dir name where photographer pictures are located
 // Dir name is based on first nane without "-" if any and replaced by " "
 function getPicturesDirName(photographerName) {
@@ -155,7 +158,7 @@ function initSortationCriteria(criteria) {
 
 // P I C T U R E S  G A L L E R Y
 // ========================================================================
-function thumbnailGalleryTemplate(data) {
+function thumbnailGalleryTemplate(data, index) {
   /* const { name, country, city, tagline, price, portrait, id } = data; */
   const { title, likes, image, video, dirName } = data;
 
@@ -181,6 +184,7 @@ function thumbnailGalleryTemplate(data) {
     /*  */
     const lightboxLink = document.createElement("div");
     lightboxLink.classList.add("medium");
+    lightboxLink.dataset.index= index;
     /*  */
 
     // 2A Check type of media: image or video
@@ -213,7 +217,7 @@ function thumbnailGalleryTemplate(data) {
     if (mediaType === "video") {
       const thumbImgCard = document.createElement("video");
       thumbImgCard.classList.add("thumbImgCard__vid"); // , "azert"
-      thumbImgCard.setAttribute("controls", "width=350");
+      // thumbImgCard.setAttribute("controls", "width=350");
       /* thumbImgCard.setAttribute("width", "100%"); */
 
       // create the video source child
@@ -223,6 +227,7 @@ function thumbnailGalleryTemplate(data) {
         `${pathTo_Photographers_Pictures}/${dirName}/${video}`
       );
       videoSource.setAttribute("type", "video/mp4");
+      videoSource.setAttribute("alt", title);
       thumbImgCard.appendChild(videoSource);
       lightboxLink.appendChild(thumbImgCard);
     }
@@ -337,8 +342,8 @@ async function createPhotographerGallery(id, sortCriteria) {
     pictures.forEach((picture) => (picture.dirName = dirName));
 
     // sort pictures / video according to sortCreteria
-    const sortedPictures = picturesSortation(pictures, sortCriteria);
-
+    sortedPictures = picturesSortation(pictures, sortCriteria);
+        console.log("sortedPictures", sortedPictures)
     // L I K E S  H A N D L I N G
     // Create a list of likes of selected picture
     // if (picturesLikeStatus.length === 0) {
@@ -408,11 +413,20 @@ async function createPhotographerGallery(id, sortCriteria) {
 
 // +++++++++++++++ List of picture  ++++++++++++++++++
 
-    let mediumList = document.querySelectorAll(".medium");
-    // console.log("mediumList: ", mediumList);
+    mediumList = Array.from(document.querySelectorAll(".medium"));
+    console.log("Array mediumList: ", Array.from(mediumList));
+    /* 
+    console.log('mediumList array image: ', Array.from(mediumList)[0].firstChild['src']);
+    console.log('Media type -> image: ', Array.from(mediumList)[0].attributes["data-medium-type"].value);
+    console.log('Media type -> video: ', Array.from(mediumList)[9].attributes["data-medium-type"].value);
+    console.log('Media type -> Alt: ', Array.from(mediumList)[0].lastElementChild["alt"]);
+    console.log('mediumList array video: ', Array.from(mediumList)[9]);
+    console.log('mediumList array video: ', Array.from(mediumList)[9].firstChild.firstElementChild['src']);
+     */
     // Add event listener to each image / video to trigger lightbox
     document.querySelectorAll(".medium").forEach((medium, index) => {
-      medium.addEventListener("click",launchLightbox);// displayLightbox);
+      medium.addEventListener("click", getFirstMedium);// displayLightbox);
+      //  medium.addEventListener("click",launchLightbox);// displayLightbox);
       console.log("medium: ", medium, index);
     });
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -454,10 +468,10 @@ async function displayThumbnailGallery(sortedPictures) {
   thumbnailGallerySection.replaceChildren();
 
   // gallery building
-  sortedPictures.forEach((picture) => {
+  sortedPictures.forEach((picture, index) => {
     console.log("pictures for each", picture);
     // retreive the thumbnail card model from the template fed by individual picture data
-    const thumbnailModel = thumbnailGalleryTemplate(picture);
+    const thumbnailModel = thumbnailGalleryTemplate(picture, index);
     // build the thumbnail card
     const pictureCard = thumbnailModel.getThumbnailCard();
     // inject the thumbnail card in the DOM

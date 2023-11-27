@@ -5,13 +5,17 @@ function displayModal() {
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
-  modal.style.display = "none";
+  
   resetForm();
+  modal.style.display = "none";
 }
 
 // Form reset
 function resetForm() {
-  console.log("RESET")
+  removeError(firstname);
+  removeError(lastname);
+  removeError(email);
+  removeError(message);
   document.getElementById("form").reset();
 }
 

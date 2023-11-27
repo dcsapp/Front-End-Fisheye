@@ -80,6 +80,7 @@ function displayHeaderPhotographer(data) {
     const contact_button = document.createElement("button");
     contact_button.classList.add("contact_button");
     contact_button.setAttribute("onclick", "displayModal()");
+    contact_button.setAttribute("aria-labelledby", "contact_modal");
     contact_button.textContent = "Contactez-moi";
 
     photographerHeader.appendChild(contact_button);

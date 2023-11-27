@@ -2,16 +2,16 @@
 // ============================================================
 let index = 0;
 let mediumType = "";
-let lightboxIsDisplayed = false;
+
+//let lightboxIsDisplayed = false;
 
 //console.log("sortedPictures from livebox", sortedPictures);
 // function getMediumIndex 
 function getFirstMedium(e) {
     index = e.currentTarget.dataset.index*1;
-    // let mediumType = e.currentTarget.dataset.mediumType
     console.log("mediumList.length", mediumList.length, index);
     myLightbox.style.display = "flex";
-    lightboxIsDisplayed = true;
+    // lightboxIsDisplayed = true;
     displayLightbox(index)
 }
     
@@ -121,10 +121,9 @@ function shiftMedium(shift) {
     displayLightbox(index += shift)
 }
 
-
 function closeLightbox() {
   myLightbox.style.display = "none";
-  lightboxIsDisplayed = false;
+  // lightboxIsDisplayed = false;
 }
 
 function nextSlide() {
@@ -145,7 +144,7 @@ document
 
 // K E Y B O A R D  L I G H T B O X  H A N D L I N G 
 document.body.addEventListener("keydown", (e) => {
-  if (lightboxIsDisplayed) {
+  if (myLightbox.style.display === "flex") {
     switch (e.code) {
       case "Escape":
         closeLightbox();
@@ -162,4 +161,3 @@ document.body.addEventListener("keydown", (e) => {
     }
   }
 });
-

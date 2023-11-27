@@ -11,7 +11,8 @@ function closeModal() {
 
 // Form reset
 function resetForm() {
-  document.querySelector("form").reset();
+  console.log("RESET")
+  document.getElementById("form").reset();
 }
 
 // F O R M  E R R O R  H A N D L I N G  D I S P L A Y
@@ -113,4 +114,19 @@ form.addEventListener("submit", function (e) {
     closeModal();
     resetForm();
   }
+});
+
+// M O D A L  K E Y B O A R D  H A N D L I N G
+// Keyboard ESC to close contact modal if not fulfilled
+
+let modalESC = document.querySelector("#contact_modal");
+document.addEventListener("keydown", (e) => {  
+  if (e.code === "Escape" && modalESC.style.display === "block") {
+    console.log("event: ", e);
+    resetForm();
+    closeModal();
+  }
+  console.log("event: ", e);
+  console.log("style: ", modalESC.style.display === "block")
+
 });

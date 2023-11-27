@@ -32,6 +32,12 @@ h1 {
     margin-left: 100px;
 }
 
+
+:focus-visible {
+    outline: 3px solid #901c1c;
+    outline-offset: 2px;            
+}
+
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head lang="fr">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -22,8 +22,8 @@
   </head>
   <body>
     <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" tabindex="0">
+        <img src="assets/images/logo.png" class="logo" alt="logo fisheye"/>
       </a>
     </header>
 
@@ -33,15 +33,15 @@
       <section class="picture-sortation">
         <p>Trier par</p>
 
-        <div class="select-menu">
+        <div class="select-menu role='listbox" tabindex="0">
           <div class="select">
             <span></span>
             <i class="fa-solid fa-angle-down"></i>
           </div>
           <div class="options-list">
-            <div class="option" value="likes">Popularité</div>
-            <div class="option" value="date">Date</div>
-            <div class="option" value="title">Titre</div>
+            <div class="option" value="likes" tabindex="0">Popularité</div>
+            <div class="option" value="date" tabindex="0">Date</div>
+            <div class="option" value="title" tabindex="0">Titre</div>
           </div>
         </div>
       </section>
@@ -65,12 +65,12 @@
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>
+          <h1>
             Contactez-moi
             <br />
             <span class="modalName"></span>
-          </h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </h1>
+          <img class="btnCloseFormModal" src="./assets/icons/closeForm.svg" onclick="closeModal()" />
         </header>
 
         <form id="form" name="form" novalidate autocomplete="off">
@@ -84,6 +84,8 @@
               minlength="2"
               placeholder=""
               value=""
+              tabindex="3"
+              autofocus
             />
           </div>
           <div class="formGroup">
@@ -96,6 +98,7 @@
               minlength="2"
               placeholder=""
               value=""
+              tabindex="5"
             />
           </div>
           <div class="formGroup">
@@ -107,58 +110,19 @@
               type="email"
               placeholder=""
               value=""
+              tabindex="7"
             />
           </div>
           <div class="formGroup">
-            <label for="message">Votre message</label>
-            <textarea id="message" class="" name="message" rows="" cols="">
+            <label for="message" >Votre message</label>
+            <textarea id="message" class="" name="message" rows="" cols="" tabindex="9">
             </textarea>
             <!-- <input /> -->
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button btnForm" tabindex="11">Envoyer</button>
         </form>
       </div>
     </div>
-<!-- 
-    <div id="lightbox__overlay">
-      <div class="lightbox__container">
-         -->
-        <!-- 
-        <button class="lightbox__close">
-          <img src="./assets/icons/close.svg" onclick="closeLightbox()" />
-        </button>
-
-        <button class="lightbox__nextPicture">
-          <img src="assets/icons/chevron_right.svg" />
-        </button>
-
-        <button class="lightbox__previousPicture">
-          <img src="assets/icons/chevron_left.svg" />
-        </button>
- -->
-
-<!--         <div class=" close cl">
-          <img src="./assets/icons/close.svg" onclick="closeLightbox()" />
-        </div>
-
-        <div class="arrow">
-          <img src="assets/icons/chevron_right.svg" />
-        </div>
-        <div class="arrow le">
-          <img src="assets/icons/chevron_left.svg" />
-        </div>
-
-        <div class="lightbox__displayedImage">
-          <img
-            src="./assets/Photographers_Pictures/Ellie Rose/Architecture_Connected_Curves.jpg"
-            alt=""
-          />
-        </div>
-
-        <div class="pictureName"></div>
-      </div>
-    </div>
- -->
   
 
     <script src="./scripts/pages/photographer.js"></script>

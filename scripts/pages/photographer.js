@@ -95,7 +95,7 @@ function displayHeaderPhotographer(data) {
       "src",
       `${pathTo_Photographers_ID_Photos}${portrait}`
     );
-    photographerPictureId.setAttribute("alt", name);
+    photographerPictureId__img.setAttribute("alt", name);
 
     photographerPictureId.appendChild(photographerPictureId__img);
     photographerHeader.appendChild(photographerPictureId);
@@ -140,6 +140,19 @@ options.forEach((option) =>
     select.querySelector(".fa-angle-down").classList.toggle("rotate-arrow");
   })
 );
+
+// Sortation keyboard handling
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    if(!options_list.classList.contains("active")){
+      options_list.classList.toggle("active");
+    }
+  }
+  if (e.key === "ArrowDown" && options_list.classList.contains("active")){
+    console.log("ggggggggg")
+  }
+})
+
 
 function initSortationCriteria(criteria) {
   // criteria variable is the JSON field used to select and sort pictures (likes / date / title)
@@ -415,14 +428,7 @@ async function createPhotographerGallery(id, sortCriteria) {
 
     mediumList = Array.from(document.querySelectorAll(".medium"));
     console.log("Array mediumList: ", Array.from(mediumList));
-    /* 
-    console.log('mediumList array image: ', Array.from(mediumList)[0].firstChild['src']);
-    console.log('Media type -> image: ', Array.from(mediumList)[0].attributes["data-medium-type"].value);
-    console.log('Media type -> video: ', Array.from(mediumList)[9].attributes["data-medium-type"].value);
-    console.log('Media type -> Alt: ', Array.from(mediumList)[0].lastElementChild["alt"]);
-    console.log('mediumList array video: ', Array.from(mediumList)[9]);
-    console.log('mediumList array video: ', Array.from(mediumList)[9].firstChild.firstElementChild['src']);
-     */
+    
     // Add event listener to each image / video to trigger lightbox
     document.querySelectorAll(".medium").forEach((medium, index) => {
       medium.addEventListener("click", getFirstMedium);// displayLightbox);
@@ -487,34 +493,7 @@ createPhotographerGallery(id, sortationCriteria);
 const likeCard = document.querySelectorAll(".addLikes");
 console.log("like cards: ", likeCard);
 
-// F O R M
-/* const modalName = document.querySelector(".madalName");
-modalName.innerText = name; */
 
-// ======== Lightbox ===============================
-
-console.log("=============================");
-//           console.log ("Sorted Pictures", sortedPictures[5]);
-// test_index = sortedPictures.findIndex.call  //sortedPictures.indexOf();
-//           const test_index = sortedPictures.map(e => e.id).indexOf(2523434634);
-//           console.log ("index in Pictures", test_index);
-
-
-const tyty = document.getElementsByClassName("medium");
-// const imageLocation = tyty[0].src//.children[0].childNodes[0].src;
-console.log("tyty: ", tyty);
-
-console.log("=============================");
-//  document.querySelectorAll(".azert").forEach((azert) => {
-//    azert.addEventListener("click", displayLightbox)
-//    console.log('azert: ', azert.src)});
-
-//    const imageLocation = tyty[2].children[0].childNodes[0].src;//[1];//.getAttribute("src");
-//    console.log('imageLocation: ', imageLocation.split('/assets/').pop());
-
-/* 
-        document.querySelectorAll(".medium").forEach((medium) => {
-            medium.addEventListener("click", displayLightbox)
-            console.log('medium: ', medium)});
-             */
-// ======== Lightbox E N D ===============================
+ 
+       
+    

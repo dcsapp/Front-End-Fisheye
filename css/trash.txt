@@ -282,3 +282,13 @@ mHeader.photographerHeader;
     /* lightboxLink.setAttribute("href", "#"); */
     lightboxLink.classList.add("medium");
     lightboxLink.setAttribute("onclick", displayLightbox);
+
+
+    /* 
+    console.log('mediumList array image: ', Array.from(mediumList)[0].firstChild['src']);
+    console.log('Media type -> image: ', Array.from(mediumList)[0].attributes["data-medium-type"].value);
+    console.log('Media type -> video: ', Array.from(mediumList)[9].attributes["data-medium-type"].value);
+    console.log('Media type -> Alt: ', Array.from(mediumList)[0].lastElementChild["alt"]);
+    console.log('mediumList array video: ', Array.from(mediumList)[9]);
+    console.log('mediumList array video: ', Array.from(mediumList)[9].firstChild.firstElementChild['src']);
+     */

@@ -198,6 +198,7 @@ function thumbnailGalleryTemplate(data, index) {
     /*  */
     const lightboxLink = document.createElement("div");
     lightboxLink.classList.add("medium");
+    lightboxLink.setAttribute("tabindex", "0");
     lightboxLink.dataset.index= index;
     /*  */
 
@@ -270,6 +271,7 @@ function thumbnailGalleryTemplate(data, index) {
     cardFooterLikeHeart.classList.add("fa-solid");
     cardFooterLikeHeart.classList.add("fa-heart");
     cardFooterLikeHeart.classList.add("addLikes");
+    cardFooterLikeHeart.setAttribute("aria-label", "like");
     cardFooterLikeHeart.setAttribute("data-oneLikeAdded", "false");
     cardFooterLike.appendChild(cardFooterLikeHeart);
 
